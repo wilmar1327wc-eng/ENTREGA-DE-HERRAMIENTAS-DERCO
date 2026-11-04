@@ -1530,7 +1530,7 @@ function fMsg(icono,titulo,texto){ return `<section class="f-card f-msg"><div cl
 function pintarFirma(){
   if(FS.pad){ FS.pad.destroy(); FS.pad=null; }
   const a=actaPorToken(FS.tok); let main;
-  if(!a) main=fMsg('alert','Este enlace no es válido','Puede estar incompleto o el acta se reemplazó por otra. Pídele a tu líder que te lo envíe de nuevo.');
+  if(!a) main=fMsg('alert','No encontramos esta acta en este dispositivo','Si te la envió tu líder, pídele que te la reenvíe.<br><br><span class="f-small">Versión de prueba: las actas se guardan en el navegador donde se crean, por eso el enlace solo abre en ese mismo computador. En la versión en línea abrirá desde cualquier celular.</span>');
   else if(a.estado==='anulada') main=fMsg('ban','Esta acta fue anulada',`Tu líder la anuló${a.anulada?.motivo?': '+esc(a.anulada.motivo):''}. Si te enviaron una nueva, usa ese enlace.`);
   else if(a.estado==='firmada') main=fListo(a);
   else if(a.estado==='novedad') main=fMsg('check','Recibimos tu novedad',`Tu líder la revisará y te enviará el acta corregida para firmar.<br><br><i>“${esc(a.novedad?.texto||'')}”</i>`);
